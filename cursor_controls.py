@@ -1,20 +1,14 @@
+from datetime import datetime, timedelta
 import time
 from colors import Colors
 
-# print(f'\033[=1h', end='')
-# print(f'{1:02}{'-'}*8')
+COUNT_DOWN_SECS = 20
+print(f'\033[?25l', end='')
 for i in range(1, 20):
-    # print(f'{i:02}{'-'*8}'*9, end='\n')
     print(f'{i:02}{'-'*8}', end='')
-    # time.sleep(3)
     for j in range(1, 9):
         print(f'{j}{'-'*9}', end='')
     print(f' {i:02}')
-    # print()
-# print()
-# exit(0)
-
-# time.sleep(1)
 
 print(f'{Colors.Back.BRIGHT_CYAN}{Colors.Fore.RED}', end='')
 # ❶ ❷ ❸ ❹ ❺ ❻ ❼ ❽ ❾ ❿ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴
@@ -29,7 +23,20 @@ print(f'\x1b[1F❽ 上移1列並至列首(1F)', end='')
 print(f'{chr(27)}[33G❾ 平移至同列第33欄(33G)', end='')
 # print(f'\033[3M❿ 上移1列(M)', end='')
 print(f'{Colors.Back.DEFAULT}{Colors.Fore.BRIGHT_GREEN}', end='')
-# print(f'\033[0K 刪除至列尾(0K)', end='')
+print(f'\033[0K❿ 刪除至列尾(0K)', end='')
+
+print(f'{Colors.Back.BLUE}{Colors.Fore.BRIGHT_YELLOW}', end='')
+print(f'\x1b[18;45H', end='')
+# for i in range(9999999):
+#     print(f'\033[0E{i:7}   {datetime.datetime.now().strftime(format='%Y-%m-%d %H:%M:%S')}', end='')
+
+
+COUNT_DOWN_SECS = 21
+stop_time = datetime.now() + timedelta(seconds=COUNT_DOWN_SECS)
+while (now := datetime.now()) < stop_time:
+    # time.sleep(0.9)
+    print(f'{(stop_time - now).seconds:3} \033[4D', end='')
+
 
 # ESC[J
 # print(f'\033[6n❿ request cursor position(6n)', end='')
@@ -40,11 +47,10 @@ print(f'{Colors.Back.DEFAULT}{Colors.Fore.BRIGHT_GREEN}', end='')
 # print(f'{chr(27)}[u⓯ restores the cursor to the last saved position', end='')
 # print()
 print(f'\x1b[20;0H', end='')
-print()
-print()
+# print()
+# print()
 
-for i in range(99999999):
-    print(f'\033[0E{i}', end='')
-    # print(f'{i}', end='')
-    # time.sleep(1)
-    # print(f'\033[9E❼ 下移9列並至列首(9E)', end='')
+# now = datetime.datetime.now()
+# for i in range(9999999):
+#     print(f'\033[0E{i:7}   {datetime.datetime.now().strftime(format='%Y-%m-%d %H:%M:%S')}', end='')
+print('\x1b[?25h', end='')
