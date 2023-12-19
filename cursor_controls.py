@@ -32,10 +32,13 @@ print(f'\x1b[18;45H', end='')
 
 
 COUNT_DOWN_SECS = 21
-stop_time = datetime.now() + timedelta(seconds=COUNT_DOWN_SECS)
-while (now := datetime.now()) < stop_time:
-    # time.sleep(0.9)
-    print(f'{(stop_time - now).seconds:3} \033[4D', end='')
+stop_time = (now := datetime.now()) + timedelta(seconds=COUNT_DOWN_SECS)
+while now < stop_time:
+    diff_secs = (stop_time - now).seconds
+    print(f'{diff_secs:3} \033[4D', end='')
+    if diff_secs == 0:
+        break
+    now = datetime.now()
 
 
 # ESC[J
