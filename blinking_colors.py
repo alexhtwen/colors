@@ -20,7 +20,7 @@ ends.append('                ▇▇      ▇▇      ▇▇  ▇▇             
 ends.append('                ▇▇      ▇▇      ▇▇  ▇▇▇▇▇▇▇▇▇       ▇▇▇▇▇▇▇▇▇  ▇▇     ▇▇▇  ▇▇▇▇▇ ')
 ends.append(' ')
 
-LOOPS = 5
+LOOPS = 10
 INTERVAL_SECONDS = 1
 
 for _ in range(LOOPS):
@@ -29,6 +29,7 @@ for _ in range(LOOPS):
     time.sleep(INTERVAL_SECONDS)
     print(chr(27)+ '[9A')
 
-print('\033[6B')
-print(f'{chr(27)}[5AHello, world.')
+# print('\033[6B')
+print(f'\033[9E', end='')
+# print(f'{chr(27)}[5AHello, world.')
 # print()
