@@ -8,7 +8,7 @@ def is_hashable(obj: object) -> bool:
     Returns:
     bool: True if the object is hashable, False otherwise.
     """
-    return_value = True
+    return_value: bool = True
     try:
         hash(obj)
     except TypeError:
